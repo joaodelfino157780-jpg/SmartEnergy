@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Device {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  room     String
+  readings Reading[]
+}
+
+model Reading {
+  id       Int      @id @default(autoincrement())
+  deviceId Int
+  day      DateTime
+  kwh      Float
+
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@unique([deviceId, day])
+  @@index([day])
+}
