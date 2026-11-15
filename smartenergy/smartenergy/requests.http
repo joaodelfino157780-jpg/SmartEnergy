@@ -1,0 +1,40 @@
+### Variáveis (extensão REST Client para VS Code)
+@host = http://localhost:3000
+
+### 1) Criar conta (plano FREE por padrão)
+POST {{host}}/api/auth/cadastro
+Content-Type: application/json
+
+{ "nome": "Teste", "email": "teste@email.com", "cpfCnpj": "24971563792", "senha": "123456" }
+
+### 2) Login
+# @name login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "teste@email.com", "senha": "123456" }
+
+### 3) Quem sou eu
+GET {{host}}/api/me
+Authorization: Bearer {{login.response.body.token}}
+
+### 4) Dashboard
+GET {{host}}/api/dashboard
+Authorization: Bearer {{login.response.body.token}}
+
+### 5) Relatório avançado (Premium)
+GET {{host}}/api/relatorio
+Authorization: Bearer {{login.response.body.token}}
+
+### 6) Assistente virtual (Premium)
+POST {{host}}/api/chat
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{ "message": "Qual aparelho consome mais energia?" }
+
+### 7) Ingestão de leitura de dispositivo
+POST {{host}}/api/readings
+Content-Type: application/json
+
+{ "device": "Ar-condicionado", "room": "Quarto", "day": "2026-11-10", "kwh": 7.2 }

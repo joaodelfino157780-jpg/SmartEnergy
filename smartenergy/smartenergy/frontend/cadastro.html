@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartEnergy · Criar conta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth">
+  <div class="auth-box">
+    <h1>⚡ SmartEnergy</h1>
+    <div class="tabs" id="tabs">
+      <button type="button" id="tab-cadastro" class="on">Criar conta</button>
+      <button type="button" id="tab-login">Entrar</button>
+    </div>
+
+    <form id="form">
+      <div class="so-cadastro"><label>Nome<input id="nome" autocomplete="name"></label></div>
+      <label>E-mail<input id="email" type="email" autocomplete="email"></label>
+      <div class="so-cadastro"><label>CPF ou CNPJ<input id="cpf" inputmode="numeric" placeholder="Somente números"></label></div>
+      <label>Senha<input id="senha" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres"></label>
+
+      <p id="erro" class="erro"></p>
+      <button id="enviar" class="btn">Criar conta</button>
+    </form>
+  </div>
+  <script src="cadastro.js"></script>
+</body>
+</html>
